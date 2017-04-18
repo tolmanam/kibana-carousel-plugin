@@ -1,0 +1,129 @@
+<div ng-controller="KbnTimeVisController" class="time-vis">
+  <h3 ng-show="config.title">{{config.title}}</h3>
+  
+  <carousel interval="0">
+      <slide ng-if="vis.params.enable_quick" active="activeSlide.quick">
+        <h4 style="margin-top: 0px; margin-bottom: 2px;">
+          <strong><i aria-hidden="true" class="fa fa-clock-o"></i> Quick</strong>
+        </h4>
+        <div>
+          <select ng-model="selectedQuick" ng-options="option.display for option in quickLists" ng-change="setQuick(selectedQuick)">
+          </select>
+        </div>
+      </slide>
+
+      <slide ng-if="vis.params.enable_relative" active="activeSlide.relative">
+        <h4 style="margin-top: 0px; margin-bottom: 2px;">
+          <strong><i aria-hidden="true" class="fa fa-clock-o"></i> Relative</strong>
+        </h4>
+        <form ng-submit="setRelative()" class="form-inline">
+          <div style="display: inline-block;">
+            <label style="float:left;">
+              From:
+              <span ng-show="relative.preview">{{relative.preview}}</span>
+              <span ng-hide="relative.preview"><i>Invalid Expression</i></span>
+            </label>
+            <br>
+            <div class="form-group">
+              <input
+                required
+                ng-model="relative.count"
+                ng-change="formatRelative()"
+                greater-than="-1"
+                type="number"
+                class="form-control">
+            </div>
+            <div class="form-group">
+              <select
+                ng-model="relative.unit"
+                ng-options="opt.value as opt.text for opt in relativeOptions"
+                ng-change="formatRelative()"
+                class="form-control col-xs-2">
+              </select>
+            </div>
+            <br>
+            <div class="small">
+              <label style="float:left;">
+                <input
+                  ng-model="relative.round"
+                  ng-checked="relative.round"
+                  ng-change="formatRelative()"
+                  type="checkbox">
+                round to the {{units[relative.unit]}}
+              </label>
+            </div>
+          </div>
+
+          <div style="display: inline-block;">
+            <label style="float:left;">
+              To: Now
+            </label>
+            <br>
+            <div class="form-group">
+              <input type="text" disabled class="form-control" value="Now">
+            </div>
+          </div>
+
+          <div style="display: inline-block;">
+            <label>&nbsp;</label>
+            <br>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary" ng-disabled="!relative.preview">
+                Go
+              </button>
+            </div>
+          </div>
+        </form>
+      </slide>
+
+      <slide ng-if="vis.params.enable_absolut" active="activeSlide.absolute">
+        <h4 style="margin-top: 0px; margin-bottom: 2px;">
+          <strong><i aria-hidden="true" class="fa fa-clock-o"></i> Absolute</strong>
+        </h4>
+        <form ng-submit="setAbsolute()">
+          <div style="display: inline-block;">
+            <label class="small" style="float:left;">From: <span ng-show="!time.absolute_from"><i>Invalid Date</i></span>
+            </label>
+            <input type="text" required class="form-control" input-datetime="{{format}}" ng-model="time.absolute_from">
+          </div>
+
+          <div style="display: inline-block;">
+            <label class="small" style="float:left;">To: <span ng-show="!time.absolute_to"><i>Invalid Date</i></span>
+            </label>
+            <input type="text" required class="form-control" input-datetime="{{format}}" ng-model="time.absolute_to">
+          </div>
+
+          <div style="display: inline-block;">
+            <button class="btn btn-primary" style="margin-bottom: 60px;" ng-disabled="time.absolute_from > time.absolute_to || !time.absolute_from || !time.absolute_to" type="submit">
+              Go
+            </button>
+            <span class="small" ng-show="time.absolute_from > time.absolute_to"><strong>From</strong> must occur before <strong>To</strong></span>
+          </div>
+        </form>
+      </slide>
+
+      <slide ng-if="vis.params.enable_animation">
+        <h4 style="margin-top: 0px; margin-bottom: 2px;">
+          <strong><i aria-hidden="true" class="fa fa-clock-o"></i> Time Animation</strong> 
+          <pretty-duration class="ng-isolate-scope" to="time.to" from="time.from"></pretty-duration>
+        </h4>
+        <p>
+          {{animationTitle}}
+        </p>
+        <timeslider start="time.absolute_from.toDate()" end="time.absolute_to.toDate()" ticks="10" on-change="filterByTime" on-clear="removeTimeFilter" style="margin-left: 43px; margin-right: 43px;"></timeslider>
+        <div class="small" style="display: inline-block;">
+          <label style="float:left;">
+            round to the nearest 
+          </label>
+          <select
+            ng-model="slider.roundUnit"
+            ng-options="opt.value as opt.text for opt in sliderRoundOptions"
+            ng-change="snapToNearest()"
+            style="margin-left: .4em;">
+          </select>
+        </div>
+      </slide>
+    </carousel>
+  
+
+</div>
