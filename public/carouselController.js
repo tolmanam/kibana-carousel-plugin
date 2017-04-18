@@ -100,6 +100,7 @@ const module = uiModules.get('kibana/kibana-time-plugin', ['kibana', 'ktp-ui.boo
         console.log("updating KbnTimeVisController.$scope stay in sync with kibana timefilter");
         //clean up old selections
         $scope.activeSlide = {
+          test: false,
           absolute: false,
           quick: false,
           relative: false
