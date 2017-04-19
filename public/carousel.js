@@ -24,13 +24,10 @@ require('ui/registry/vis_types').register(CarouselVisProvider);
       params: {
           editor: optionsTemplate,
           defaults: {
-              enable_quick: true,
-              enable_relative: true,
-              enable_absolut: true,
-              enable_animation: true,
+              enable_test: true,
           }
       },
-      requiresSearch: false
+      requiresSearch: true
     });
   }
 
