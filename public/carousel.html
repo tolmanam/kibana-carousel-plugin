@@ -4,24 +4,28 @@
   <carousel interval="0">
       <slide active="true">
         <h4 style="margin-top: 0px; margin-bottom: 2px;">
-          <strong><i aria-hidden="true" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i> Hello {{ firstName + " " + lastName }}</strong>
+          <strong><i aria-hidden="true" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i> Home</strong>
         </h4>
         <div>
             <pre>
-Hello World
+Title Field: {{ vis.params.titleField }}
+Description Field: {{ vis.params.descField }}
+Content Field: {{ vis.params.contentField }}
+Type: {{ vis.params.contentType }}
+Query: {{ query }}
+Filter: {{ filter }}
+Hits: {{ hits }}
             </pre>
         </div>
       </slide>
 
       <slide active="false">
         <h4 style="margin-top: 0px; margin-bottom: 2px;">
-          <strong><i aria-hidden="true" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i> Home</strong>
+          <strong><i aria-hidden="true" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i> Hello {{ firstName + " " + lastName }}</strong>
         </h4>
         <div>
             <pre>
-Name: {{ firstName }}
-Query: {{ query }}
-Filter: {{ filter }}
+Hello World
             </pre>
         </div>
       </slide>

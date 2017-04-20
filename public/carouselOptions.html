@@ -1,6 +1,45 @@
-<div class="form-group">
+
+<div class="vis-option-item form-group">
   <label>
-    <input type="checkbox" ng-model="vis.params.enable_test" checked class="ng-pristine ng-valid ng-touched">
-    Show Test Slide
+     Title Field <kbn-info="Field containing the title"> </kbn-info>
   </label>
+  <select
+     class="form-control"
+     ng-model="vis.params.titleField"
+     ng-options="field.name as field.name for field in vis.indexPattern.fields | filter : {type : 'string'} " >
+  </select>
 </div>
+
+<div class="vis-option-item form-group">
+  <label>
+     Description Field <kbn-info="Field containing the description"> </kbn-info>
+  </label>
+  <select
+     class="form-control"
+     ng-model="vis.params.descField"
+     ng-options="field.name as field.name for field in vis.indexPattern.fields | filter : {type : 'string'} " >
+  </select>
+</div>
+
+<div class="vis-option-item form-group">
+  <label>
+     Content Field <kbn-info="Field containing the content"> </kbn-info>
+  </label>
+  <select
+     class="form-control"
+     ng-model="vis.params.contentField"
+     ng-options="field.name as field.name for field in vis.indexPattern.fields | filter : {type : 'string'} " >
+  </select>
+</div>
+
+<div class="form-group">
+  <label>Content Type</label>
+  <select name="agg"
+    class="form-control"
+    ng-model="vis.params.contentType"
+    ng-init="vis.params.contentType || vis.type.params.contentTypes[0]"
+    ng-options="contentType as contentType for contentType in vis.type.params.contentTypes"
+    >
+  </select>
+</div>
+
