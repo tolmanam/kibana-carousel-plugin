@@ -4,7 +4,7 @@
   <carousel interval="0">
       <slide active="true">
         <h4 style="margin-top: 0px; margin-bottom: 2px;">
-          <strong><i aria-hidden="true" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i> Home</strong>
+          <strong><i aria-hidden="true" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i> Test Slide</strong>
         </h4>
         <div>
             <pre>
@@ -21,12 +21,36 @@ Hits: {{ hits }}
 
       <slide active="false">
         <h4 style="margin-top: 0px; margin-bottom: 2px;">
-          <strong><i aria-hidden="true" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i> Hello {{ firstName + " " + lastName }}</strong>
+          <strong>Video Example</strong>
         </h4>
         <div>
-            <pre>
-Hello World
-            </pre>
+            <video width="320" height="240" controls>
+              <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
+              <source src="https://www.w3schools.com/html/movie.ogg" type="video/ogg">
+            Your browser does not support the video tag.
+            </video>
+        </div>
+      </slide>
+
+      <slide active="false">
+        <h4 style="margin-top: 0px; margin-bottom: 2px;">
+          <strong>Audio Example</strong>
+        </h4>
+        <div>
+            <audio controls>
+              <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
+              <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+            </audio>
+        </div>
+      </slide>
+
+      <slide active="false">
+        <h4 style="margin-top: 0px; margin-bottom: 2px;">
+          <strong>Image Example</strong>
+        </h4>
+        <div>
+            <img src="https://www.w3schools.com/tags/smiley.gif" alt="Smiley face" height="42" width="42">
         </div>
       </slide>
 
