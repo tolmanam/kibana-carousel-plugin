@@ -8,7 +8,6 @@ const module = uiModules.get('kibana/kibana-time-plugin', ['kibana', 'ktp-ui.boo
     ) {
  
 
-    $scope.vis.savedAggs = $scope.vis.aggs;
     const appState = getAppState();
 
     function updateVars(resp)
@@ -22,8 +21,6 @@ const module = uiModules.get('kibana/kibana-time-plugin', ['kibana', 'ktp-ui.boo
         console.dir($scope);
         console.log("Current Vis");
         console.dir($scope.vis);
-        console.log("Current aggs");
-        console.dir($scope.vis.aggs);
 
         $scope.filter = queryFilter.getFilters()
         if (appState.query && !appState.linked) {
@@ -36,38 +33,40 @@ const module = uiModules.get('kibana/kibana-time-plugin', ['kibana', 'ktp-ui.boo
 
         if ( $scope.hits > 0 ) {
 
-            console.log("I beleive this response is an aggregation query");
-
-            source.set('size', 15);
+            source.set('size', $scope.vis.params.maxSlides);
             source.set('filter', $scope.filter); // why not appState.filter?
             source.set('query', $scope.query);
             source.index($scope.vis.indexPattern);
 
-            $scope.vis.aggs = {
-                getRequestAggs: function() { // called by courier.  We want to override the existing aggs temporarily
-                             return [];
-                },
-                toDsl: function() { 
-                            return {};
-                }
-            };
-//             source.onResults(individualResultsHandler);
-// 
-             source.fetch().then(individualResultsHandler);
-        }
-        else {
-            console.log("I beleive we have individual results");
-            $scope.vis.aggs = $scope.vis.savedAggs;
+            source.fetch().then(individualResultsHandler);
         }
     }
     
     function individualResultsHandler(results)
     {
     
-        $scope.vis.aggs = $scope.vis.savedAggs;
-
         console.log("Wow... we got results");
-        console.dir(results);
+        var hits = results.hits.hits
+        console.dir(hits);
+
+        $scope.results = []
+        var fields = {}
+        if ( $scope.vis.params.titleField )   fields['title'] = $scope.vis.params.titleField
+        if ( $scope.vis.params.descField )    fields['desc'] = $scope.vis.params.descField
+        if ( $scope.vis.params.contentField ) fields['content'] = $scope.vis.params.contentField
+
+        for (var i = 0; i < hits.length; i++) {
+            console.log("Loop over hits");
+            var row = hits[i]._source
+            console.dir(row)
+            var temp = { 'type': $scope.vis.params.contentType }
+            for (var key in fields) {
+                temp[key] = row[fields[key]]
+            }
+            $scope.results.push( temp )
+        }
+
+        console.dir($scope.results)
     
     }
 

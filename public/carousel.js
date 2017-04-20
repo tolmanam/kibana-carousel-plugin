@@ -29,7 +29,8 @@ require('ui/registry/vis_types').register(CarouselVisProvider);
               titleField: null,
               descField: null,
               contentField: null,
-              contentType: 'Auto'
+              contentType: 'Auto',
+              maxSlides: 15 
           },
           contentTypes: ['Auto', 'Image', 'Video', 'Audio', 'Embedded HTML']
       },

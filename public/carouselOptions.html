@@ -43,3 +43,12 @@
   </select>
 </div>
 
+<div class="form-group">
+  <label>Max Slides to Render</label>
+  <input type="number"
+    class="form-control"
+    name="maxSlides"
+    ng-init="vis.params.maxSlides || 15"
+    ng-model="vis.params.maxSlides">
+</div>
+
