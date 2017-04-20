@@ -8,7 +8,7 @@ const module = uiModules.get('kibana/kibana-time-plugin', ['kibana', 'ktp-ui.boo
     ) {
  
 
-    $scope.vis.savedAggs = $scope.vis.aggs.vis.aggs;
+    $scope.vis.savedAggs = $scope.vis.aggs;
     const appState = getAppState();
 
     function updateVars(resp)
@@ -41,8 +41,9 @@ const module = uiModules.get('kibana/kibana-time-plugin', ['kibana', 'ktp-ui.boo
             source.set('size', 15);
             source.set('filter', $scope.filter); // why not appState.filter?
             source.set('query', $scope.query);
-            
-            $scope.vis.aggs.vis.aggs = {
+            source.index($scope.vis.indexPattern);
+
+            $scope.vis.aggs = {
                 getRequestAggs: function() { // called by courier.  We want to override the existing aggs temporarily
                              return [];
                 },
@@ -52,11 +53,11 @@ const module = uiModules.get('kibana/kibana-time-plugin', ['kibana', 'ktp-ui.boo
             };
 //             source.onResults(individualResultsHandler);
 // 
-             source.fetch();
+             source.fetch().then(individualResultsHandler);
         }
         else {
             console.log("I beleive we have individual results");
-            $scope.vis.aggs.vis.aggs = $scope.vis.savedAggs;
+            $scope.vis.aggs = $scope.vis.savedAggs;
         }
     }
     
