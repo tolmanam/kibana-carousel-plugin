@@ -1,5 +1,6 @@
 <div ng-controller="KbnCarouselVisController" class="time-vis">
   <h3 ng-show="config.title">{{config.title}}</h3>
+  <h4 ng-if=(vis.params.maxSlides<hits)>Displaying {{vis.params.maxSlides}} of {{hits}}</h4>
   
   <carousel interval="0">
       <slide active="true">
@@ -15,6 +16,7 @@ Type: {{ vis.params.contentType }}
 Query: {{ query }}
 Filter: {{ filter }}
 Hits: {{ hits }}
+Results: {{ results }}
             </pre>
         </div>
       </slide>
@@ -52,6 +54,17 @@ Hits: {{ hits }}
         <div>
             <img src="https://www.w3schools.com/tags/smiley.gif" alt="Smiley face" height="42" width="42">
         </div>
+      </slide>
+
+      <slide active="false" ng-repeat="row in results">
+        <h4 ng-if="row.title" style="margin-top: 0px; margin-bottom: 2px;">
+          <strong>{{row.title}}</strong>
+        </h4>
+        <pre>
+            type: {{ row.type }}
+            content: {{ row.content }}
+            desc: {{ row.desc }}
+        </pre>
       </slide>
 
     </carousel>
