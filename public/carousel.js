@@ -1,4 +1,10 @@
 import 'ui/angular-bootstrap';
+import 'plugins/kibana-carousel-plugin/lib/slick-carousel/slick/slick.css';
+import 'plugins/kibana-carousel-plugin/lib/slick-carousel/slick/slick-theme.css';
+import 'plugins/kibana-carousel-plugin/lib/jquery/dist/jquery.js';
+import 'plugins/kibana-carousel-plugin/lib/angular/angular.js';
+import 'plugins/kibana-carousel-plugin/lib/slick-carousel/slick/slick.js';
+import 'plugins/kibana-carousel-plugin/lib/angular-slick/dist/slick.js';
 import 'plugins/kibana-carousel-plugin/lib/angular-bootstrap/css/bootstrap-theme.css';
 import 'plugins/kibana-carousel-plugin/lib/angular-bootstrap/css/carousel.css';
 import 'plugins/kibana-carousel-plugin/lib/angular-bootstrap/js/carousel.js';
