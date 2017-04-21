@@ -63,6 +63,14 @@ const module = uiModules.get('kibana/kibana-time-plugin', ['kibana', 'ktp-ui.boo
             for (var key in fields) {
                 temp[key] = row[fields[key]]
             }
+            if ( temp.content ){
+
+var xhr = new XMLHttpRequest();
+xhr.open('HEAD', temp.content, false);
+console.dir(xhr);
+temp['mime-type'] = xhr.getResponseHeader("Content-Type")
+
+            }
             $scope.results.push( temp )
         }
 

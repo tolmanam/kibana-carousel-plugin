@@ -1,8 +1,24 @@
 @import (reference) "~ui/styles/mixins.less";
 
-.time-vis {
+.carousel-vis {
+  position: relative;
+  padding: 2%;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-slide {
+  position: relative;
   padding: 0;
   width: 100%;
+  height: 100%;
+}
+
+.carousel-content {
+  position: relative;
+  padding: 0;
+  max-width: 90%;
+  max-height: 90%;
 }
 
 .vis-editor {
@@ -14,7 +30,7 @@
       flex: 1 1 auto;
     }
 
-    .time-vis-options {
+    .carousel-vis-options {
       .flex-parent();
       flex: 1 1 auto;
 
@@ -27,6 +43,18 @@
 
   }
 
+}
+
+.slideTitle {
+    font-size: 1.2em;
+}
+
+.slideDescription {
+    font-size: 0.6em;
+}
+
+.carouselSubtitle {
+    font-size: 0.8em;
 }
 
 .carousel-control {

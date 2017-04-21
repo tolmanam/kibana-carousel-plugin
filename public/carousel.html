@@ -1,72 +1,48 @@
-<div ng-controller="KbnCarouselVisController" class="time-vis">
+<div ng-controller="KbnCarouselVisController" class="carousel-vis">
   <h3 ng-show="config.title">{{config.title}}</h3>
-  <h4 ng-if=(vis.params.maxSlides<hits)>Displaying {{vis.params.maxSlides}} of {{hits}}</h4>
-  
   <carousel interval="0">
-      <slide active="true">
-        <h4 style="margin-top: 0px; margin-bottom: 2px;">
-          <strong><i aria-hidden="true" class="fa fa-circle-o-notch fa-spin fa-3x fa-fw"></i> Test Slide</strong>
-        </h4>
-        <div>
-            <pre>
-Title Field: {{ vis.params.titleField }}
-Description Field: {{ vis.params.descField }}
-Content Field: {{ vis.params.contentField }}
-Type: {{ vis.params.contentType }}
-Query: {{ query }}
-Filter: {{ filter }}
-Hits: {{ hits }}
-Results: {{ results }}
-            </pre>
-        </div>
-      </slide>
+    <div ng-if=(vis.params.maxSlides<hits) class="carouselSubtitle">Displaying {{vis.params.maxSlides}} of {{hits}}</div>
 
-      <slide active="false">
-        <h4 style="margin-top: 0px; margin-bottom: 2px;">
-          <strong>Video Example</strong>
-        </h4>
-        <div>
-            <video width="320" height="240" controls>
-              <source src="https://www.w3schools.com/html/movie.mp4" type="video/mp4">
-              <source src="https://www.w3schools.com/html/movie.ogg" type="video/ogg">
-            Your browser does not support the video tag.
-            </video>
-        </div>
-      </slide>
+    <slide class="carousel-slide">
+      <div class='slideTitle'>Image Example</div>
+      <div class='slideDescription'>This is where the description goes</div>
+      <img src='https://static.pexels.com/photos/36753/flower-purple-lical-blosso.jpg' class="carousel-content">
+    </slide>
 
-      <slide active="false">
-        <h4 style="margin-top: 0px; margin-bottom: 2px;">
-          <strong>Audio Example</strong>
-        </h4>
-        <div>
-            <audio controls>
-              <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg">
-              <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-            </audio>
-        </div>
-      </slide>
+    <slide class="carousel-slide">
+      <div class='slideTitle'>Video example</div>
+      <div class='slideDescription'>This is where the description goes</div>
+      <video controls class="carousel-content">
+        <source src='https://www.html5rocks.com/en/tutorials/video/basics/devstories.webm'>
+      </video>
+    </slide>
 
-      <slide active="false">
-        <h4 style="margin-top: 0px; margin-bottom: 2px;">
-          <strong>Image Example</strong>
-        </h4>
-        <div>
-            <img src="https://www.w3schools.com/tags/smiley.gif" alt="Smiley face" height="42" width="42">
-        </div>
-      </slide>
+    <slide class="carousel-slide">
+      <div class='slideTitle'>Audio example</div>
+      <div class='slideDescription'>This is where the description goes</div>
+      <audio controls class="carousel-content">
+        <source src='http://developer.mozilla.org/@api/deki/files/2926/=AudioTest_(1).ogg'>
+      </audio>
+    </slide>
 
-      <slide active="false" ng-repeat="row in results">
-        <h4 ng-if="row.title" style="margin-top: 0px; margin-bottom: 2px;">
-          <strong>{{row.title}}</strong>
-        </h4>
-        <pre>
-            type: {{ row.type }}
-            content: {{ row.content }}
-            desc: {{ row.desc }}
-        </pre>
-      </slide>
+    <slide class="carousel-slide">
+      <div class='slideTitle'>Iframe example</div>
+      <div class='slideDescription'>This is where the description goes</div>
+      <div class="carousel-content">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/RL0Fai06OhU" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </slide>
 
-    </carousel>
-
+    <slide ng-repeat="row in results" class="carousel-slide">
+      <div ng-if="row.title" class='slideTitle'>{{ row.title }}</div>
+      <div ng-if="row.desc" class='slideDescription'>{{ row.desc }}</div>
+      <img ng-if="row.type === 'image'" src=row.content>
+      <audio ng-if="row.type === 'audio'" controls>
+          <source src=row.content>
+      </audio>
+      <video ng-if="row.type === 'video'" controls>
+          <source src=row.content>
+      </video>
+    </slide>
+  </carousel>
 </div>
