@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import uiModules from 'ui/modules';
 
-const module = uiModules.get('kibana/kibana-time-plugin', ['kibana', 'ktp-ui.bootstrap.carousel', 'BootstrapAddons']);
+const module = uiModules.get('kibana/kibana-time-plugin', ['kibana']);
 
   module.controller('KbnCarouselVisController', function (
         $scope, $rootScope, $element, $timeout, Private, courier, config, getAppState, indexPatterns, Notifier, $filter

@@ -1,39 +1,39 @@
 <div ng-controller="KbnCarouselVisController" class="carousel-vis">
   <h3 ng-show="config.title">{{config.title}}</h3>
-  <carousel interval="0">
+  <div interval="0">
     <div ng-if=(vis.params.maxSlides<hits) class="carouselSubtitle">Displaying {{vis.params.maxSlides}} of {{hits}}</div>
 
-    <slide class="carousel-slide">
+    <div class="carousel-slide">
       <div class='slideTitle'>Image Example</div>
       <div class='slideDescription'>This is where the description goes</div>
       <img src='https://static.pexels.com/photos/36753/flower-purple-lical-blosso.jpg' class="carousel-content">
-    </slide>
+    </div>
 
-    <slide class="carousel-slide">
+    <div class="carousel-slide">
       <div class='slideTitle'>Video example</div>
       <div class='slideDescription'>This is where the description goes</div>
       <video controls class="carousel-content">
         <source src='https://www.html5rocks.com/en/tutorials/video/basics/devstories.webm'>
       </video>
-    </slide>
+    </div>
 
-    <slide class="carousel-slide">
+    <div class="carousel-slide">
       <div class='slideTitle'>Audio example</div>
       <div class='slideDescription'>This is where the description goes</div>
       <audio controls class="carousel-content">
         <source src='http://developer.mozilla.org/@api/deki/files/2926/=AudioTest_(1).ogg'>
       </audio>
-    </slide>
+    </div>
 
-    <slide class="carousel-slide">
+    <div class="carousel-slide">
       <div class='slideTitle'>Iframe example</div>
       <div class='slideDescription'>This is where the description goes</div>
       <div class="carousel-content">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/RL0Fai06OhU" frameborder="0" allowfullscreen></iframe>
       </div>
-    </slide>
+    </div>
 
-    <slide ng-repeat="row in results" class="carousel-slide">
+    <div ng-repeat="row in results" class="carousel-slide">
       <div ng-if="row.title" class='slideTitle'>{{ row.title }}</div>
       <div ng-if="row.desc" class='slideDescription'>{{ row.desc }}</div>
       <img ng-if="row.type === 'image'" src=row.content>
@@ -43,6 +43,6 @@
       <video ng-if="row.type === 'video'" controls>
           <source src=row.content>
       </video>
-    </slide>
-  </carousel>
+    </div>
+  </div>
 </div>

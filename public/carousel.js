@@ -1,9 +1,3 @@
-import 'ui/angular-bootstrap';
-import 'plugins/kibana-carousel-plugin/lib/angular-bootstrap/css/bootstrap-theme.css';
-import 'plugins/kibana-carousel-plugin/lib/angular-bootstrap/css/carousel.css';
-import 'plugins/kibana-carousel-plugin/lib/angular-bootstrap/js/carousel.js';
-import 'plugins/kibana-carousel-plugin/lib/bootstrap-addons/dist/css/bootstrap-addons.css';
-import 'plugins/kibana-carousel-plugin/lib/bootstrap-addons/dist/js/bootstrap-addons.js';
 import 'plugins/kibana-carousel-plugin/carousel.less';
 import 'plugins/kibana-carousel-plugin/carouselController';
 import TemplateVisTypeTemplateVisTypeProvider from 'ui/template_vis_type/template_vis_type';
