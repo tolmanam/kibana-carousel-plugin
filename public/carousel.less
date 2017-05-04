@@ -1,115 +1,120 @@
-@import (reference) "~ui/styles/mixins.less";
-
-.carousel-vis {
-  position: relative;
-  padding: 2%;
+.contain {
   width: 100%;
-  height: 100%;
 }
 
-.carousel-slide {
+.row_of_tiles {
+  height: 85%;
+  transition: 450ms transform;
+  font-size: 0;
+  white-space: nowrap;
+  /* margin: (140.625 / 2) 0; */
+  padding-bottom: 10px; 
+}
+
+.tile {
   position: relative;
-  padding: 0;
-  width: 100%;
+  display: inline-block;
+  height: 85%;
+  margin-right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 450ms all;
+  transform-origin: center left;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.tile__media {
   height: 100%;
+  object-fit: scale-down;
+  height: 60%;
+  vertical-align: middle;
+  object-fit: scale-down;
 }
 
-.carousel-content {
-  position: relative;
-  padding: 0;
-  max-width: 90%;
-  max-height: 90%;
+// .tile__details {
+//   position: absolute;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//   top: 0;
+//   font-size: 10px;
+//   opacity: 0;
+//   background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+//   transition: 450ms opacity;
+// 
+//   &:after, &:before {
+//     content: '';
+//     position: absolute;
+//     top: 50%;
+//     left: 50%;
+//     display: black;
+//   }
+// 
+//   &:after {
+//     margin-top: (-(50px / 2));
+//     margin-left: (-(50px / 2));
+//     width: 50px;
+//     height: 50px;
+//     border: 3px solid #ecf0f1;
+//     line-height: 50px;
+//     text-align: center;
+//     border-radius: 100%;
+//     background: rgba(0,0,0,0.5);
+//     z-index: 1;
+//   }
+// 
+//   &:before {
+//     content: '▶';
+//     left: 0;
+//     width: 100%;
+//     font-size: 30px;
+//     margin-left: 7px;
+//     margin-top: -18px;
+//     text-align: center;
+//     z-index: 2;
+//   }
+// 
+//   .tile:hover, &{
+//     opacity: 1;
+//   }
+// }
+// 
+.tile__desc {
+  position: absolute;
+  text-shadow: 0 1px 2px #000;
+  color: #fff;
+  top: 25;
+  z-index: 1000;
 }
 
-.vis-editor {
-
-  &.vis-type-markdown {
-
-    .visualization-options {
-      .flex-parent();
-      flex: 1 1 auto;
-    }
-
-    .carousel-vis-options {
-      .flex-parent();
-      flex: 1 1 auto;
-
-      textarea {
-        flex: 1 1 auto;
-        resize: none;
-      }
-
-    }
-
-  }
-
+.tile__title {
+  position: absolute;
+  text-shadow: 0 1px 2px #000;
+  color: #fff;
+  top: -25;
+  padding: 10px;
+  z-index: 1000;
 }
-
-.slideTitle {
-    font-size: 1.2em;
-}
-
-.slideDescription {
-    font-size: 0.6em;
-}
-
-.carouselSubtitle {
-    font-size: 0.8em;
-}
-
-.carousel-control {
-  width: 40px;
-}
-.carousel {
-  height: 100%;
-}
-.carousel-indicators {
-  position: relative;
-  top: 85%;
-  bottom: 0px;
-}
-
-.tab-dashboard.theme-light {
-  .carousel-indicators li {
-    border: 1px solid black;
-  }
-  .carousel-indicators .active {
-    background-color: black;
-  }
-  .ba-timeslider {
-    stroke: #444444;
-  }
-  .ba-scaleline {
-    stroke: #444444;
-  }
-  .ba-scalelabel {
-    fill: #444444;
-    font-size: 0.8em;
-  }
-}
-
-.tab-dashboard.theme-dark {
-  .carousel-indicators li {
-    border: 1px solid #cecece;
-  }
-  .carousel-indicators .active {
-    background-color: #cecece;
-  }
-  .ba-timeslider {
-    stroke: #666666;
-    fill: #444444;
-  }
-  .ba-scaleline {
-    stroke: #cecece;
-  }
-  .ba-scalelabel {
-    fill: #cecece;
-    font-size: 0.8em;
-  }
-  .ba-brush .extent {
-    stoke: #d9534f;
-    fill: #d9534f;
-    fill-opacity: .5;
-    shape-rendering: crispEdges;
-  }
-}
+// 
+// .row__inner:hover {
+//   transform: translate3d(-62.5, 0, 0);
+// }
+// 
+// .row__inner:hover, .tile {
+// 
+//   // Fade out every tile
+//   opacity: .3;
+// 
+//   // And then grow the current tile and make it opaque again
+//   &:hover {
+//     transform: scale(1.5);
+//     opacity: 1;
+//   }
+// }
+//
+// And finally move all tiles right of the current tile to the right,
+// so its flush against the hovered tile
+// .tile:hover ~ .tile {
+//   transform: translate3d(125, 0, 0);
+// }
