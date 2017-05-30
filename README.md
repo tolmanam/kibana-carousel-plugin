@@ -13,3 +13,7 @@ My carousel project includes a branch that uses the Bootstrap carousel to show j
 Full disclosure, the skeleton for my work comes from Nathan Reese's time plugin
 
  * https://github.com/nreese/kibana-time-plugin
+
+------------------------------------------
+
+![Screen Grab](example.png)
