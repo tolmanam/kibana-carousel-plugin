@@ -3,7 +3,7 @@
 }
 
 .row_of_tiles {
-  height: 85%;
+  height: 100%;
   transition: 450ms transform;
   font-size: 0;
   white-space: nowrap;
@@ -14,35 +14,35 @@
 .tile {
   position: relative;
   display: inline-block;
-  height: 85%;
+  height: 100%;
   margin-right: 10px;
   font-size: 20px;
   cursor: pointer;
   transition: 450ms all;
   transform-origin: center left;
-  display: flex;
   flex-wrap: nowrap;
 }
 
 .tile__media {
-  height: 100%;
   object-fit: scale-down;
-  height: 60%;
+  height: 95%;
   vertical-align: middle;
   object-fit: scale-down;
+// z-index: 50;
 }
 
-// .tile__details {
-//   position: absolute;
+.tile__details {
+  position: absolute;
 //   bottom: 0;
 //   left: 0;
 //   right: 0;
 //   top: 0;
-//   font-size: 10px;
-//   opacity: 0;
-//   background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
-//   transition: 450ms opacity;
-// 
+  height: 100%;
+// //   opacity: 0;
+// //   background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0) 100%);
+// //   transition: 450ms opacity;
+//   z-index: 1000;
+
 //   &:after, &:before {
 //     content: '';
 //     position: absolute;
@@ -78,25 +78,28 @@
 //   .tile:hover, &{
 //     opacity: 1;
 //   }
-// }
-// 
-.tile__desc {
-  position: absolute;
-  text-shadow: 0 1px 2px #000;
-  color: #fff;
-  top: 25;
-  z-index: 1000;
 }
 
 .tile__title {
   position: absolute;
-  text-shadow: 0 1px 2px #000;
+  text-shadow: 3px 3px 5px #000, -3px -3px 5px #000, 3px -3px 5px #000, -3px 3px 5px #000;
   color: #fff;
-  top: -25;
-  padding: 10px;
+  top: 6px;
+  left: 6px;
+  z-index: 1000;
+  font-size: 15px;
+}
+
+.tile__desc {
+  position: absolute;
+  font-size: 10px;
+  text-shadow: 3px 3px 5px #000, -3px -3px 5px #000, 3px -3px 5px #000, -3px 3px 5px #000;
+  color: #fff;
+  top: 70%;
+  left: 6px;
   z-index: 1000;
 }
-// 
+
 // .row__inner:hover {
 //   transform: translate3d(-62.5, 0, 0);
 // }
@@ -112,7 +115,7 @@
 //     opacity: 1;
 //   }
 // }
-//
+// 
 // And finally move all tiles right of the current tile to the right,
 // so its flush against the hovered tile
 // .tile:hover ~ .tile {

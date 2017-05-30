@@ -12,7 +12,25 @@
           <img src='https://static.pexels.com/photos/36753/flower-purple-lical-blosso.jpg' height=100% >
         </div>
       </div>
+      <div class="tile">
+        <div class="tile__details">
+          <div class='tile__title'>Image Example</div>
+          <div class='tile__desc'>This is where the description goes</div>
+        </div>
+        <div class="tile__media">
+          <img src='https://static.pexels.com/photos/36753/flower-purple-lical-blosso.jpg' height=100% >
+        </div>
+      </div>
   
+      <div class="tile">
+        <div class="tile__details">
+          <div class='tile__title'>Video example</div>
+          <div class='tile__desc'>This is where the description goes</div>
+        </div>
+        <video controls class="tile__media">
+          <source src='https://www.html5rocks.com/en/tutorials/video/basics/devstories.webm'>
+        </video>
+      </div>
       <div class="tile">
         <div class="tile__details">
           <div class='tile__title'>Video example</div>
@@ -32,15 +50,14 @@
           <source src='http://developer.mozilla.org/@api/deki/files/2926/=AudioTest_(1).ogg'>
         </audio>
       </div>
-  
       <div class="tile">
         <div class="tile__details">
-          <div class='tile__title'>Iframe example</div>
+          <div class='tile__title'>Audio example</div>
           <div class='tile__desc'>This is where the description goes</div>
         </div>
-        <div class="tile__media">
-          <iframe width="100%" height="100%" src="https://www.youtube.com/embed/RL0Fai06OhU" frameborder="0" allowfullscreen></iframe>
-        </div>
+        <audio controls class="tile__media">
+          <source src='http://developer.mozilla.org/@api/deki/files/2926/=AudioTest_(1).ogg'>
+        </audio>
       </div>
   
       <div ng-repeat="row in results" class="tile">
