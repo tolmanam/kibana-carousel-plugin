@@ -2,76 +2,18 @@
   <h3 ng-show="config.title">{{config.title}}</h3>
   <div ng-if=(vis.params.maxSlides<hits) class="carouselSubtitle">Displaying {{vis.params.maxSlides}} of {{hits}}</div>
   <div class="row_of_tiles">
-
-      <div class="tile">
-        <div class="tile__details">
-          <div class='tile__title'>Image Example</div>
-          <div class='tile__desc'>This is where the description goes</div>
-        </div>
-        <div class="tile__media">
-          <img src='https://static.pexels.com/photos/36753/flower-purple-lical-blosso.jpg' height=100% >
-        </div>
-      </div>
-      <div class="tile">
-        <div class="tile__details">
-          <div class='tile__title'>Image Example</div>
-          <div class='tile__desc'>This is where the description goes</div>
-        </div>
-        <div class="tile__media">
-          <img src='https://static.pexels.com/photos/36753/flower-purple-lical-blosso.jpg' height=100% >
-        </div>
-      </div>
-  
-      <div class="tile">
-        <div class="tile__details">
-          <div class='tile__title'>Video example</div>
-          <div class='tile__desc'>This is where the description goes</div>
-        </div>
-        <video controls class="tile__media">
-          <source src='https://www.html5rocks.com/en/tutorials/video/basics/devstories.webm'>
-        </video>
-      </div>
-      <div class="tile">
-        <div class="tile__details">
-          <div class='tile__title'>Video example</div>
-          <div class='tile__desc'>This is where the description goes</div>
-        </div>
-        <video controls class="tile__media">
-          <source src='https://www.html5rocks.com/en/tutorials/video/basics/devstories.webm'>
-        </video>
-      </div>
-  
-      <div class="tile">
-        <div class="tile__details">
-          <div class='tile__title'>Audio example</div>
-          <div class='tile__desc'>This is where the description goes</div>
-        </div>
-        <audio controls class="tile__media">
-          <source src='http://developer.mozilla.org/@api/deki/files/2926/=AudioTest_(1).ogg'>
-        </audio>
-      </div>
-      <div class="tile">
-        <div class="tile__details">
-          <div class='tile__title'>Audio example</div>
-          <div class='tile__desc'>This is where the description goes</div>
-        </div>
-        <audio controls class="tile__media">
-          <source src='http://developer.mozilla.org/@api/deki/files/2926/=AudioTest_(1).ogg'>
-        </audio>
-      </div>
-  
       <div ng-repeat="row in results" class="tile">
         <div class="tile__details">
           <div ng-if="row.title" class='tile__title'>{{ row.title }}</div>
           <div ng-if="row.desc" class='tile__desc'>{{ row.desc }}</div>
         </div>
 
-        <img ng-if="row.type === 'image'" src=row.content class="tile__media">
+        <img ng-if="row.type === 'image'" ng-src={{row.content}} class="tile__media">
         <audio ng-if="row.type === 'audio'" controls class="tile__media">
-            <source src=row.content>
+            <source ng-src={{row.content}}>
         </audio>
         <video ng-if="row.type === 'video'" controls class="tile__media">
-            <source src=row.content>
+            <source ng-src={{row.content}}>
         </video>
       </div>
   </div>
